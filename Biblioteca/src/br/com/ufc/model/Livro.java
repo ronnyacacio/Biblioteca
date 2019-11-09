@@ -15,6 +15,7 @@ public class Livro {
     private String autor;
     private Long isbn;
     private String descricao;
+    private Emprestimo emprestimo;
 
     public Livro(){}
     
@@ -56,7 +57,13 @@ public class Livro {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
-    
+
+    public Emprestimo getEmprestimo() {
+        return emprestimo;
+    }
+
+    public void setEmprestimo(Emprestimo emprestimo) {
+        this.emprestimo = emprestimo;
+    }
     
 }

@@ -37,4 +37,44 @@ public class LivroDAO implements LivroI {
         return null;
     }
     
+    public List<Livro> buscarLivroPorTitulo(String titulo) {
+        List<Livro> livross = new ArrayList<Livro>();
+        for(Livro livro : livros) {
+            if(livro.getTitulo().equals(titulo))
+                livross.add(livro);
+        }
+        return livross;
+     }
+    
+    public List<Livro> buscarLivroPorDescricao(String descricao) {
+        List<Livro> livross = new ArrayList<Livro>();
+        for(Livro livro : livros) {
+            if(livro.getDescricao().equals(descricao))
+                livross.add(livro);
+        }
+        return livross;
+    }
+    
+    public List<Livro> getLivro() {
+        return livros;
+    }
+    
+    public List<Livro> livrosEmprestados() {
+        List<Livro> livross = new ArrayList<Livro>();
+        for(Livro livro : livros) {
+            if(livro.getEmprestimo() != null)
+                livross.add(livro);
+        }
+        return livross;
+    }
+    
+    public List<Livro> livrosDisponiveis() {
+        List<Livro> livross = new ArrayList<Livro>();
+        for(Livro livro : livros) {
+            if(livro.getEmprestimo() == null)
+                livross.add(livro);
+        }
+        return livross;
+    }
+    
 }

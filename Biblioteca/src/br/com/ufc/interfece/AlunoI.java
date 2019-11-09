@@ -16,4 +16,6 @@ public interface AlunoI {
     public void cadastrarAluno(Aluno aluno);
     public void removerAluno(int matricula);
     public Aluno buscarAlunoPorMatricula(int matricula);
+    public List<Aluno> alunosComEmprestimos();
+    public List<Aluno> getAluno();
 }

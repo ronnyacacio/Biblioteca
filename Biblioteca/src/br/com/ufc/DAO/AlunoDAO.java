@@ -35,7 +35,19 @@ public class AlunoDAO implements AlunoI{
                 return aluno;
         }
         return null;
-            
+    }
+    
+    public List<Aluno> alunosComEmprestimos() {
+        List<Aluno> alunoss = new ArrayList<Aluno>();
+        for(Aluno aluno : alunos) {
+            if(aluno.getEmprestimos().size() > 0)
+                alunoss.add(aluno);
+        }
+        return alunoss;
+    }
+    
+    public List<Aluno> getAluno() {
+        return alunos;
     }
     
 }

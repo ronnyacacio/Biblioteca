@@ -22,6 +22,7 @@ public class Emprestimo {
     private Livro livro;
     private Date aluguel;
     private Date devolucao;
+    private boolean renovacao;
     
     public Emprestimo(){this.id = ++serial;}
 
@@ -70,6 +71,14 @@ public class Emprestimo {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
-    }   
+    }
+
+    public boolean isRenovacao() {
+        return renovacao;
+    }
+
+    public void setRenovacao(boolean renovacao) {
+        this.renovacao = renovacao;
+    }
     
 }

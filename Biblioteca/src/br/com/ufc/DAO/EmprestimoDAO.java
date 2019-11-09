@@ -8,6 +8,8 @@ package br.com.ufc.DAO;
 import br.com.ufc.interfece.EmprestimoI;
 import br.com.ufc.model.Emprestimo;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +22,8 @@ public class EmprestimoDAO implements EmprestimoI {
 
     @Override
     public void alugarLivro(Emprestimo emprestimo) {
-        emprestimos.add(emprestimo);
+        if(emprestimo.getAluno().getEmprestimos().size() <= 4)
+            emprestimos.add(emprestimo);
     }
 
     @Override
@@ -43,12 +46,25 @@ public class EmprestimoDAO implements EmprestimoI {
 
     @Override
     public void devolverLivro(int id) {
+        List<Emprestimo> empretimosAluno = buscarEmprestimoPorId(id).getAluno().getEmprestimos();
+        empretimosAluno.remove(buscarEmprestimoPorId(id));
+        buscarEmprestimoPorId(id).getLivro().setEmprestimo(null);
         emprestimos.remove(buscarEmprestimoPorId(id));
     }
 
     @Override
     public List<Emprestimo> buscarTodosOsEmprestimos() {
         return emprestimos;
+    }
+    
+    public void renovarEmprestimo(int id) {
+        Emprestimo emprestimo = buscarEmprestimoPorId(id);
+        if(!emprestimo.isRenovacao()) {
+            emprestimo.setRenovacao(true);
+            Date date = emprestimo.getDevolucao();
+            date.setDate(date.getDate() + 7);
+            emprestimo.setDevolucao(date);
+        }
     }
     
 }
