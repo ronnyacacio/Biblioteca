@@ -10,7 +10,7 @@ A aplicação será acessada por alunos e bibliotecários, assim os alunos ficar
 
 - [x] Criar interfaces para as classes DAO implementarem os métodos ali definidos
 
-- [ ] Criar DAOs para servirem de controllers e implementar os métodos para o funcionamento da aplicação
+- [x] Criar DAOs para servirem de controllers e implementar os métodos para o funcionamento da aplicação
 
 - [ ] Criar Interface gráfica usando a biblioteca Swing do java
 
