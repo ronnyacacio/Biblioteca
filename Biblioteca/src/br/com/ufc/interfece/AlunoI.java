@@ -5,6 +5,8 @@
  */
 package br.com.ufc.interfece;
 
+import br.com.ufc.exception.AJCException;
+import br.com.ufc.exception.ANEException;
 import br.com.ufc.model.Aluno;
 import java.util.List;
 
@@ -13,9 +15,9 @@ import java.util.List;
  * @author ronny
  */
 public interface AlunoI {
-    public void cadastrarAluno(Aluno aluno);
-    public void removerAluno(int matricula);
-    public Aluno buscarAlunoPorMatricula(int matricula);
-    public List<Aluno> alunosComEmprestimos();
-    public List<Aluno> getAluno();
+    public void cadastrarAluno(Aluno aluno) throws AJCException;
+    public void removerAluno(int matricula) throws ANEException;
+    public Aluno buscarAlunoPorMatricula(int matricula) throws ANEException;
+    public List<Aluno> alunosComEmprestimos() throws ANEException;
+    public List<Aluno> getAluno() throws ANEException;
 }

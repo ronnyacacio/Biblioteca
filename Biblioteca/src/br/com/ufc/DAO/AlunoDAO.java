@@ -5,6 +5,8 @@
  */
 package br.com.ufc.DAO;
 
+import br.com.ufc.exception.AJCException;
+import br.com.ufc.exception.ANEException;
 import br.com.ufc.interfece.AlunoI;
 import br.com.ufc.model.Aluno;
 import java.util.ArrayList;
@@ -19,35 +21,44 @@ public class AlunoDAO implements AlunoI{
     private static List<Aluno> alunos = new ArrayList<Aluno>();
 
     @Override
-    public void cadastrarAluno(Aluno aluno) {
-        alunos.add(aluno);
+    public void cadastrarAluno(Aluno aluno) throws AJCException{
+        try {
+            buscarAlunoPorMatricula(aluno.getMatricula());
+            throw new AJCException();
+        } catch(ANEException e) {
+            alunos.add(aluno);
+        }
     }
 
     @Override
-    public void removerAluno(int matricula) {
+    public void removerAluno(int matricula) throws ANEException {
         alunos.remove(buscarAlunoPorMatricula(matricula));
     }
 
     @Override
-    public Aluno buscarAlunoPorMatricula(int matricula) {
+    public Aluno buscarAlunoPorMatricula(int matricula) throws ANEException {
         for(Aluno aluno : alunos) {
             if(aluno.getMatricula() == matricula)
                 return aluno;
         }
-        return null;
+        throw new ANEException();
     }
     
-    public List<Aluno> alunosComEmprestimos() {
+    public List<Aluno> alunosComEmprestimos() throws ANEException {
         List<Aluno> alunoss = new ArrayList<Aluno>();
         for(Aluno aluno : alunos) {
             if(aluno.getEmprestimos().size() > 0)
                 alunoss.add(aluno);
         }
-        return alunoss;
+        if(alunoss.size() > 0)
+            return alunoss;
+        throw new ANEException();
     }
     
-    public List<Aluno> getAluno() {
-        return alunos;
+    public List<Aluno> getAluno() throws ANEException {
+        if(alunos.size() > 0)
+            return alunos;
+        throw new ANEException();
     }
     
 }
