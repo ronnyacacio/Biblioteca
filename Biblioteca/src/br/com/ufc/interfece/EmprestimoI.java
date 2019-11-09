@@ -18,4 +18,5 @@ public interface EmprestimoI {
     public void devolverLivro(int idEmprestimo);
     public Emprestimo buscarEmprestimoPorId(int id);
     public List<Emprestimo> buscarTodosOsEmprestimos();
+    public void renovarEmprestimo(int id);
 }

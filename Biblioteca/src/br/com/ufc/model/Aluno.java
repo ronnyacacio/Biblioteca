@@ -5,7 +5,9 @@
  */
 package br.com.ufc.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -19,6 +21,7 @@ public class Aluno {
     private String cpf;
     private String telefone;
     private Date dataNascimento;
+    private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
     
     public Aluno(){}
 
@@ -78,7 +81,12 @@ public class Aluno {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    
-    
-    
+
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }   
 }
