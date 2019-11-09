@@ -15,14 +15,18 @@ import java.util.List;
  */
 public class Emprestimo {
     
+    private static int serial = 0;
+    
+    private int id;
     private Aluno aluno;
     private Date aluguel;
     private Date devolucao;
     private List<Livro> livros = new ArrayList<Livro>();
     
-    public Emprestimo(){}
+    public Emprestimo(){this.id = ++serial;}
 
     public Emprestimo(Aluno aluno, Date aluguel, Date devolucao) {
+        this.id = ++serial;
         this.aluno = aluno;
         this.aluguel = aluguel;
         this.devolucao = devolucao;
