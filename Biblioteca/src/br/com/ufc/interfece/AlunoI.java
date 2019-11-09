@@ -15,6 +15,5 @@ import java.util.List;
 public interface AlunoI {
     public void cadastrarAluno(Aluno aluno);
     public void removerAluno(int matricula);
-    public List<Aluno> alunosComLivrosEmprestados();
     public Aluno buscarAlunoPorMatricula(int matricula);
 }

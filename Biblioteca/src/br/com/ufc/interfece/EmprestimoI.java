@@ -15,6 +15,7 @@ import java.util.List;
 public interface EmprestimoI {
     public void alugarLivro(Emprestimo emprestimo);
     public List<Emprestimo> buscarEmprestimosPorAluno(int matricula);
-    public void devolverLivro(int idEmprestimo, int isbnLivro);
+    public void devolverLivro(int idEmprestimo);
+    public Emprestimo buscarEmprestimoPorId(int id);
     public List<Emprestimo> buscarTodosOsEmprestimos();
 }
