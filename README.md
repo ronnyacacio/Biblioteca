@@ -12,6 +12,8 @@ A aplicação será acessada por alunos e bibliotecários, assim os alunos ficar
 
 - [x] Criar DAOs para servirem de controllers e implementar os métodos para o funcionamento da aplicação
 
+- [x] Criar exceções para os metódos
+
 - [ ] Criar Interface gráfica usando a biblioteca Swing do java
 
 ## Desafios 
