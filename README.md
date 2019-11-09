@@ -30,11 +30,11 @@ A aplicação será acessada por alunos e bibliotecários, assim os alunos ficar
 
 - [x] Visualizar livros emprestados
 
-- [] Na visualização de livros disponíveis os alunos poderão visualizar todos os
+- [ ] Na visualização de livros disponíveis os alunos poderão visualizar todos os
 livros disponíveis na biblioteca, será apresentada o título e a descrição de
 cada livro
 
-- x ] Os alunos poderão solicitar os livros, mas só poderão pedir emprestados
+- [x] Os alunos poderão solicitar os livros, mas só poderão pedir emprestados
 no máximo 4 livros, caso tente pedir mais livros do que o permitido o sistema deverá emitir uma mensagem de que o aluno não pode pegar
 mais livros
 
