@@ -19,19 +19,27 @@ public class Emprestimo {
     
     private int id;
     private Aluno aluno;
+    private Livro livro;
     private Date aluguel;
     private Date devolucao;
-    private List<Livro> livros = new ArrayList<Livro>();
     
     public Emprestimo(){this.id = ++serial;}
 
-    public Emprestimo(Aluno aluno, Date aluguel, Date devolucao) {
+    public Emprestimo(Aluno aluno, Livro livro, Date aluguel, Date devolucao) {
         this.id = ++serial;
         this.aluno = aluno;
         this.aluguel = aluguel;
         this.devolucao = devolucao;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public Aluno getAluno() {
         return aluno;
     }
@@ -56,13 +64,12 @@ public class Emprestimo {
         this.devolucao = devolucao;
     }
 
-    public List<Livro> getLivros() {
-        return livros;
+    public Livro getLivro() {
+        return livro;
     }
 
-    public void setLivros(List<Livro> livros) {
-        this.livros = livros;
-    }
-    
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }   
     
 }
