@@ -44,6 +44,7 @@ public class AlunoDAO implements AlunoI{
         throw new ANEException();
     }
     
+    @Override
     public List<Aluno> alunosComEmprestimos() throws ANEException {
         List<Aluno> alunoss = new ArrayList<Aluno>();
         for(Aluno aluno : alunos) {
@@ -55,6 +56,7 @@ public class AlunoDAO implements AlunoI{
         throw new ANEException();
     }
     
+    @Override
     public List<Aluno> getAluno() throws ANEException {
         if(alunos.size() > 0)
             return alunos;
