@@ -5,11 +5,17 @@
  */
 package br.com.ufc.view;
 
+import br.com.ufc.DAO.LivroDAO;
+import br.com.ufc.exception.LNEException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ronny
  */
 public class TelaExcluirLivro extends javax.swing.JInternalFrame {
+    
+    LivroDAO livroDAO = new LivroDAO();
 
     /**
      * Creates new form TelaRemoveLivro
@@ -27,27 +33,78 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        campoIsbn = new javax.swing.JTextField();
+        excluirLivro = new javax.swing.JButton();
+
         setClosable(true);
-        setIconifiable(true);
         setMaximizable(true);
         setTitle("Excluir Livro");
         setToolTipText("");
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel1.setText("Digite o Isbn do livro:");
+
+        campoIsbn.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+
+        excluirLivro.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        excluirLivro.setText("Excluir");
+        excluirLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirLivroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(267, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(campoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(255, 255, 255))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(278, 278, 278))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(excluirLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(306, 306, 306))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(excluirLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void excluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirLivroActionPerformed
+        if(campoIsbn.getText().equals(""))
+            JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
+        else {
+            try {
+                livroDAO.removerLivro(Long.parseLong(campoIsbn.getText()));
+            } catch (LNEException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "ERRO:  o campo Isbn aceita somente números!");
+            }
+        }
+    }//GEN-LAST:event_excluirLivroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoIsbn;
+    private javax.swing.JButton excluirLivro;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

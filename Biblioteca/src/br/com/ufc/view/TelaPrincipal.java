@@ -5,11 +5,13 @@
  */
 package br.com.ufc.view;
 
+import br.com.ufc.DAO.AlunoDAO;
 import br.com.ufc.util.PosicaoFormulario;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JInternalFrame;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,32 +20,39 @@ import javax.swing.ImageIcon;
 public class TelaPrincipal extends javax.swing.JFrame {
     
     JInternalFrame frameAberto = new JInternalFrame();
+    JPanel panel = new JPanel();
     
     PosicaoFormulario form = new PosicaoFormulario();
-    TelaExcluirLivro tel;
-    TelaCadastroAluno tca;
-    TelaExcluirAluno tea;
-    TelaVizualizarAluno tva;
-    TelaCadastroLivro tcl;
-    TelaVizualizarLivro tvl;
-    TelaEmprestarLivro teml;
-    TelaDevolverLivro tdl;
-    TelaVizualizarEmprestimo tve;
+            
+    TelaExcluirLivro tel = new TelaExcluirLivro();
+    TelaCadastroAluno tca = new TelaCadastroAluno();
+    TelaExcluirAluno tea = new TelaExcluirAluno();
+    TelaVizualizarAluno tva = new TelaVizualizarAluno();
+    TelaCadastroLivro tcl = new TelaCadastroLivro();
+    TelaVizualizarLivro tvl = new TelaVizualizarLivro();
+    TelaEmprestarLivro teml = new TelaEmprestarLivro();
+    TelaDevolverLivro tdl = new TelaDevolverLivro();
+    TelaVizualizarEmprestimo tve = new TelaVizualizarEmprestimo();
     /**
      * Creates new form SistemaBiblioteca
      */
     public TelaPrincipal() {
         initComponents();
+        panel.setVisible(false);
         setExtendedState(MAXIMIZED_BOTH);
+        setTitle("Biblioteca Monólitos");
         ImageIcon imagem = new ImageIcon("/home/ronny/NetBeansProjects/Biblioteca/Biblioteca/src/imagens/library-enter6.jpg");
         menuPrincipal.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height-50);
-        System.out.println(menuPrincipal.getWidth() + "/" + menuPrincipal.getHeight());
         menuPrincipal.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height-50, Image.SCALE_DEFAULT)));
     }
     
+    public JPanel getPanel() {
+        return this.panel;
+    }
+    
     public void openFrame(JInternalFrame frame) {
-        form.abrirFormulario(frame, menuPrincipal);
         frameAberto.hide();
+        form.abrirFormulario(frame, menuPrincipal);
         frameAberto = frame;
     }
     
@@ -76,10 +85,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Aluno.png"))); // NOI18N
         jMenu1.setText("Aluno");
         jMenu1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
 
         cadastrarAluno.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        cadastrarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/AlunoAdd.png"))); // NOI18N
         cadastrarAluno.setText("Cadastrar");
         cadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +100,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.add(cadastrarAluno);
 
         excluirAluno.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        excluirAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/AlunoRemove.png"))); // NOI18N
         excluirAluno.setText("Excluir");
         excluirAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +110,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.add(excluirAluno);
 
         vizualizarAluno.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        vizualizarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Vizualizar.png"))); // NOI18N
         vizualizarAluno.setText("Vizualizar");
         vizualizarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,10 +121,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Livro.png"))); // NOI18N
         jMenu2.setText("Livro");
         jMenu2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
 
         cadastrarLivro.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        cadastrarLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/LivroAdd.png"))); // NOI18N
         cadastrarLivro.setText("Cadastrar");
         cadastrarLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +136,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.add(cadastrarLivro);
 
         excluirLivro.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        excluirLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/LivroRemove.png"))); // NOI18N
         excluirLivro.setText("Excluir");
         excluirLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +146,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.add(excluirLivro);
 
         vizualizarLivro.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        vizualizarLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Vizualizar.png"))); // NOI18N
         vizualizarLivro.setText("Vizualizar");
         vizualizarLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,10 +157,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Emprestimo.png"))); // NOI18N
         jMenu3.setText("Empréstimo");
         jMenu3.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
 
         emprestarLivro.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        emprestarLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/EmprestimoAdd.png"))); // NOI18N
         emprestarLivro.setText("Emprestar livro");
         emprestarLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +172,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.add(emprestarLivro);
 
         devolverLivro.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        devolverLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/EmprestimoRemove.png"))); // NOI18N
         devolverLivro.setText("Devolver livro");
         devolverLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +182,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.add(devolverLivro);
 
         vizualizarEmprestimos.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        vizualizarEmprestimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Vizualizar.png"))); // NOI18N
         vizualizarEmprestimos.setText("Vizualizar emprestimos");
         vizualizarEmprestimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,54 +203,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+            .addComponent(menuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void excluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirLivroActionPerformed
-        tel = new TelaExcluirLivro();
         openFrame(tel);
     }//GEN-LAST:event_excluirLivroActionPerformed
 
     private void cadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarAlunoActionPerformed
-        tca = new TelaCadastroAluno();
         openFrame(tca);
     }//GEN-LAST:event_cadastrarAlunoActionPerformed
 
     private void excluirAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAlunoActionPerformed
-        tea = new TelaExcluirAluno();
         openFrame(tea);
     }//GEN-LAST:event_excluirAlunoActionPerformed
 
     private void vizualizarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vizualizarAlunoActionPerformed
-        tva = new TelaVizualizarAluno();
         openFrame(tva);
     }//GEN-LAST:event_vizualizarAlunoActionPerformed
 
     private void cadastrarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarLivroActionPerformed
-        tcl = new TelaCadastroLivro();
         openFrame(tcl);
     }//GEN-LAST:event_cadastrarLivroActionPerformed
 
     private void vizualizarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vizualizarLivroActionPerformed
-        tvl = new TelaVizualizarLivro();
-        openFrame(tvl);
+       openFrame(tvl);
     }//GEN-LAST:event_vizualizarLivroActionPerformed
 
     private void emprestarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroActionPerformed
-        teml = new TelaEmprestarLivro();
         openFrame(teml);
     }//GEN-LAST:event_emprestarLivroActionPerformed
 
     private void devolverLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverLivroActionPerformed
-        tdl = new TelaDevolverLivro();
         openFrame(tdl);
     }//GEN-LAST:event_devolverLivroActionPerformed
 
     private void vizualizarEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vizualizarEmprestimosActionPerformed
-        tve = new TelaVizualizarEmprestimo();
         openFrame(tve);
     }//GEN-LAST:event_vizualizarEmprestimosActionPerformed
 
@@ -265,6 +277,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
+                
             }
         });
     }

@@ -45,6 +45,15 @@ public class AlunoDAO implements AlunoI{
     }
     
     @Override
+    public Aluno buscarAlunoPorCpf(String cpf) throws ANEException {
+        for(Aluno aluno : alunos) {
+            if(aluno.getCpf().equals(cpf))
+                return aluno;
+        }
+        throw new ANEException();
+    }
+    
+    @Override
     public List<Aluno> alunosComEmprestimos() throws ANEException {
         List<Aluno> alunoss = new ArrayList<Aluno>();
         for(Aluno aluno : alunos) {

@@ -28,7 +28,6 @@ public class TelaVizualizarEmprestimo extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         setClosable(true);
-        setIconifiable(true);
         setMaximizable(true);
         setTitle("Vizualizar Empréstimos");
 
