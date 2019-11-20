@@ -25,11 +25,16 @@ public class EmprestimoDAO implements EmprestimoI {
 
     @Override
     public void alugarLivro(Emprestimo emprestimo) throws LJEException, LLUException {
-        if(emprestimo.getAluno().getEmprestimos().size() <= 4)
-            if(emprestimo.getLivro().getEmprestimo() != null) {
-                emprestimos.add(emprestimo);
-            }    
-        throw new LLUException();
+        if(emprestimo.getAluno().getEmprestimos().size() > 4)
+            throw new LLUException();
+        else if(emprestimo.getLivro().getEmprestimo() != null) 
+            throw new LJEException();
+        else {
+            emprestimo.getLivro().setEmprestimo(emprestimo);
+            emprestimo.getAluno().getEmprestimos().add(emprestimo);
+            
+            emprestimos.add(emprestimo);
+        }
     }
 
     @Override
@@ -75,8 +80,8 @@ public class EmprestimoDAO implements EmprestimoI {
             Date date = emprestimo.getDevolucao();
             date.setDate(date.getDate() + 7);
             emprestimo.setDevolucao(date);
-        }
-        throw new EJRException();
+        } else 
+            throw new EJRException();
     }
     
 }
