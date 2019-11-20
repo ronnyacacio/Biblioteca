@@ -69,7 +69,6 @@ public class TelaVizualizarLivro extends javax.swing.JInternalFrame {
         descricao = new javax.swing.JTextArea();
 
         setClosable(true);
-        setMaximizable(true);
         setTitle("Vizualizar Livros");
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(

@@ -33,6 +33,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     TelaEmprestarLivro teml = new TelaEmprestarLivro();
     TelaDevolverLivro tdl = new TelaDevolverLivro();
     TelaVizualizarEmprestimo tve = new TelaVizualizarEmprestimo();
+    TelaRenovarEmprestimo tre = new TelaRenovarEmprestimo();
     /**
      * Creates new form SistemaBiblioteca
      */
@@ -80,6 +81,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         emprestarLivro = new javax.swing.JMenuItem();
         devolverLivro = new javax.swing.JMenuItem();
         vizualizarEmprestimos = new javax.swing.JMenuItem();
+        renovarEmprestimo = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        sair = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -191,7 +195,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(vizualizarEmprestimos);
 
+        renovarEmprestimo.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        renovarEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Renovar.png"))); // NOI18N
+        renovarEmprestimo.setText("Renovar empréstimo");
+        renovarEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                renovarEmprestimoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(renovarEmprestimo);
+
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Sair.png"))); // NOI18N
+        jMenu4.setText("Sair");
+        jMenu4.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+
+        sair.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/sair2.png"))); // NOI18N
+        sair.setText("Sair");
+        sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairActionPerformed(evt);
+            }
+        });
+        jMenu4.add(sair);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -199,7 +229,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addComponent(menuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,6 +274,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void vizualizarEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vizualizarEmprestimosActionPerformed
         openFrame(tve);
     }//GEN-LAST:event_vizualizarEmprestimosActionPerformed
+
+    private void renovarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renovarEmprestimoActionPerformed
+        openFrame(tre);
+    }//GEN-LAST:event_renovarEmprestimoActionPerformed
+
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_sairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,9 +330,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel menuPrincipal;
+    private javax.swing.JMenuItem renovarEmprestimo;
+    private javax.swing.JMenuItem sair;
     private javax.swing.JMenuItem vizualizarAluno;
     private javax.swing.JMenuItem vizualizarEmprestimos;
     private javax.swing.JMenuItem vizualizarLivro;

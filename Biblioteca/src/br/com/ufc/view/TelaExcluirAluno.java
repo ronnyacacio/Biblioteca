@@ -39,7 +39,6 @@ public class TelaExcluirAluno extends javax.swing.JInternalFrame {
         removerAluno = new javax.swing.JButton();
 
         setClosable(true);
-        setMaximizable(true);
         setTitle("Excluir Aluno");
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N

@@ -38,7 +38,6 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
         excluirLivro = new javax.swing.JButton();
 
         setClosable(true);
-        setMaximizable(true);
         setTitle("Excluir Livro");
         setToolTipText("");
 
