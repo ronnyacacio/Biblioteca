@@ -14,7 +14,7 @@ A aplicação será acessada por alunos e bibliotecários, assim os alunos ficar
 
 - [x] Criar exceções para os metódos
 
-- [ ] Criar Interface gráfica usando a biblioteca Swing do java
+- [x] Criar Interface gráfica usando a biblioteca Swing do java
 
 ## Desafios 
 
@@ -32,7 +32,7 @@ A aplicação será acessada por alunos e bibliotecários, assim os alunos ficar
 
 - [x] Visualizar livros emprestados
 
-- [ ] Na visualização de livros disponíveis os alunos poderão visualizar todos os
+- [x] Na visualização de livros disponíveis os alunos poderão visualizar todos os
 livros disponíveis na biblioteca, será apresentada o título e a descrição de
 cada livro
 
