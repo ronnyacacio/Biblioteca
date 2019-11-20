@@ -5,11 +5,18 @@
  */
 package br.com.ufc.view;
 
+import br.com.ufc.DAO.AlunoDAO;
+import br.com.ufc.exception.ANEException;
+import br.com.ufc.model.Aluno;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ronny
  */
 public class TelaExcluirAluno extends javax.swing.JInternalFrame {
+    
+    AlunoDAO alunoDAO = new AlunoDAO();
 
     /**
      * Creates new form TelaRemoverAluno
@@ -27,26 +34,73 @@ public class TelaExcluirAluno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        campoMatricula = new javax.swing.JTextField();
+        removerAluno = new javax.swing.JButton();
+
         setClosable(true);
-        setIconifiable(true);
         setMaximizable(true);
         setTitle("Excluir Aluno");
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel1.setText("Digite a matrícula do aluno:");
+
+        removerAluno.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        removerAluno.setText("Remover");
+        removerAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerAlunoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(removerAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(510, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(campoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(removerAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void removerAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerAlunoActionPerformed
+        if(campoMatricula.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
+        } else {
+            try {
+                alunoDAO.removerAluno(Integer.parseInt(campoMatricula.getText()));
+                JOptionPane.showMessageDialog(this, "Aluno removido com sucesso!");
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "ERRO: o campo matrícula aceita somente números!");
+            } catch (ANEException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            } finally {
+                campoMatricula.setText("");
+            }
+        }
+    }//GEN-LAST:event_removerAlunoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoMatricula;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton removerAluno;
     // End of variables declaration//GEN-END:variables
 }

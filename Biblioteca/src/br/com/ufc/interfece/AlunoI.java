@@ -20,4 +20,5 @@ public interface AlunoI {
     public Aluno buscarAlunoPorMatricula(int matricula) throws ANEException;
     public List<Aluno> alunosComEmprestimos() throws ANEException;
     public List<Aluno> getAluno() throws ANEException;
+    public Aluno buscarAlunoPorCpf(String cpf) throws ANEException;
 }

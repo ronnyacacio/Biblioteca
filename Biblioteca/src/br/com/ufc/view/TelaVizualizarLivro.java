@@ -5,15 +5,37 @@
  */
 package br.com.ufc.view;
 
+import br.com.ufc.DAO.LivroDAO;
+import br.com.ufc.exception.LNEException;
+import br.com.ufc.model.Livro;
+import br.com.ufc.util.PosicaoFormulario;
+import java.awt.BorderLayout;
+import java.awt.Image;
+import java.io.File;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.SpringLayout.WEST;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author ronny
  */
 public class TelaVizualizarLivro extends javax.swing.JInternalFrame {
+    
+    LivroDAO livroDAO = new LivroDAO();
+    PosicaoFormulario pf = new PosicaoFormulario();
 
     /**
      * Creates new form TelaListaLivro
      */
+    
     public TelaVizualizarLivro() {
         initComponents();
     }
@@ -27,26 +49,289 @@ public class TelaVizualizarLivro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        mostrarTodos = new javax.swing.JButton();
+        livrosEmprestados = new javax.swing.JButton();
+        livrosDisponiveis = new javax.swing.JButton();
+        buscarPorIsbnLivro = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        campoIsbn = new javax.swing.JTextField();
+        capa = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        autor = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descricao = new javax.swing.JTextArea();
+
         setClosable(true);
-        setIconifiable(true);
         setMaximizable(true);
         setTitle("Vizualizar Livros");
+
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Isbn", "Título", "Descrição"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tabela);
+
+        mostrarTodos.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        mostrarTodos.setText("Mostrar todos");
+        mostrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarTodosActionPerformed(evt);
+            }
+        });
+
+        livrosEmprestados.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        livrosEmprestados.setText("Livros emprestados");
+        livrosEmprestados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                livrosEmprestadosActionPerformed(evt);
+            }
+        });
+
+        livrosDisponiveis.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        livrosDisponiveis.setText("Livros disponíveis");
+        livrosDisponiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                livrosDisponiveisActionPerformed(evt);
+            }
+        });
+
+        buscarPorIsbnLivro.setText("Buscar por isbn do livro");
+        buscarPorIsbnLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPorIsbnLivroActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel1.setText("Isbn:");
+
+        campoIsbn.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setText("Título:");
+
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel3.setText("Autor:");
+
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel4.setText("Status:");
+
+        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel5.setText("Descrição:");
+
+        descricao.setColumns(20);
+        descricao.setRows(5);
+        jScrollPane1.setViewportView(descricao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mostrarTodos)
+                        .addGap(18, 18, 18)
+                        .addComponent(livrosDisponiveis)
+                        .addGap(18, 18, 18)
+                        .addComponent(livrosEmprestados))
+                    .addComponent(campoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarPorIsbnLivro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(status, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                    .addComponent(capa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(autor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(capa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2))
+                    .addComponent(titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(buscarPorIsbnLivro)
+                                    .addComponent(jLabel5))
+                                .addGap(191, 191, 191))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1)
+                                .addGap(93, 93, 93))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(livrosEmprestados, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(livrosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mostrarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(93, 93, 93))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void livrosDisponiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livrosDisponiveisActionPerformed
+        DefaultTableModel table = (DefaultTableModel) tabela.getModel();
+        
+        while(table.getRowCount() > 0)
+            table.removeRow(0);
+        
+        try {
+            List<Livro> livros = livroDAO.livrosDisponiveis();
+            for(Livro livro : livros)
+                table.addRow(new Object[] { livro.getIsbn(), livro.getTitulo(), livro.getDescricao() });;
+        } catch (LNEException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_livrosDisponiveisActionPerformed
 
+    private void mostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTodosActionPerformed
+        DefaultTableModel table = (DefaultTableModel) tabela.getModel();
+        
+        while(table.getRowCount() > 0)
+            table.removeRow(0);
+        
+        try {
+            List<Livro> livros = livroDAO.getLivro();
+            for(Livro livro : livros)
+                table.addRow(new Object[] { livro.getIsbn(), livro.getTitulo(), livro.getDescricao() });
+        } catch (LNEException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_mostrarTodosActionPerformed
 
+    private void livrosEmprestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livrosEmprestadosActionPerformed
+        DefaultTableModel table = (DefaultTableModel) tabela.getModel();
+        
+        while(table.getRowCount() > 0)
+            table.removeRow(0);
+        
+        try {
+            List<Livro> livros = livroDAO.livrosEmprestados();
+            for(Livro livro : livros)
+                table.addRow(new Object[] { livro.getIsbn(), livro.getTitulo(), livro.getDescricao() });
+        } catch (LNEException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_livrosEmprestadosActionPerformed
+
+    private void buscarPorIsbnLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorIsbnLivroActionPerformed
+        DefaultTableModel table = (DefaultTableModel) tabela.getModel();
+        
+        while(table.getRowCount() > 0)
+            table.removeRow(0);
+        
+        if(campoIsbn.getText().equals(""))
+            JOptionPane.showMessageDialog(this, "ERRO: digíte o isbn!");
+        else {
+            try {
+                Livro livro = livroDAO.buscarLivroPorIsbn(Long.parseLong(campoIsbn.getText()));
+                table.addRow(new Object[] { livro.getIsbn(), livro.getTitulo(), livro.getDescricao() });
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "ERRO: o campo isbn aceita somente números!");
+            } catch (LNEException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_buscarPorIsbnLivroActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        int index = tabela.getSelectedRow();
+        TableModel model = tabela.getModel();
+        Long isbn = Long.parseLong(model.getValueAt(index, 0).toString());
+        try {
+            Livro livro = livroDAO.buscarLivroPorIsbn(isbn);
+            autor.setText(livro.getAutor());
+            titulo.setText(livro.getTitulo());
+            descricao.setText(livro.getDescricao());
+            if(livro.getEmprestimo() == null)
+                status.setText("Disponível");
+            else
+                status.setText("Emprestado");
+            File filecapa = livro.getCapa();
+            ImageIcon imagem = new ImageIcon(filecapa.getPath());
+            capa.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(capa.getWidth(), capa.getHeight(), Image.SCALE_DEFAULT)));
+        } catch (LNEException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_tabelaMouseClicked
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel autor;
+    private javax.swing.JButton buscarPorIsbnLivro;
+    private javax.swing.JTextField campoIsbn;
+    private javax.swing.JLabel capa;
+    private javax.swing.JTextArea descricao;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton livrosDisponiveis;
+    private javax.swing.JButton livrosEmprestados;
+    private javax.swing.JButton mostrarTodos;
+    private javax.swing.JLabel status;
+    private javax.swing.JTable tabela;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

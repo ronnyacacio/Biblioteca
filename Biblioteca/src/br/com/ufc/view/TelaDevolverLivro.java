@@ -28,7 +28,6 @@ public class TelaDevolverLivro extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         setClosable(true);
-        setIconifiable(true);
         setMaximizable(true);
         setTitle("Devolver Livro");
 
