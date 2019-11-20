@@ -53,7 +53,6 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
         campoDescricao = new javax.swing.JTextArea();
 
         setClosable(true);
-        setMaximizable(true);
         setTitle("Cadastrar Livro");
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -198,7 +197,6 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
         
         if(opc == JFileChooser.APPROVE_OPTION){
             file = arquivo.getSelectedFile();
-            //String filename = file.getAbsolutePath();
             ImageIcon imagem = new ImageIcon(arquivo.getSelectedFile().getPath());
             capa.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(capa.getWidth(), capa.getHeight(), Image.SCALE_DEFAULT)));
         }

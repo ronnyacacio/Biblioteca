@@ -12,7 +12,6 @@ import br.com.ufc.exception.LLUException;
 import br.com.ufc.interfece.EmprestimoI;
 import br.com.ufc.model.Emprestimo;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 

@@ -47,7 +47,6 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
-        setMaximizable(true);
         setTitle("Vizualizar Alunos");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -209,6 +208,9 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                 } catch (ANEException e) {
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
+            } finally {
+                campoCpf.setText("");
+                campoMatricula.setText("");
             }
         }
     }//GEN-LAST:event_mostrarAlunosActionPerformed

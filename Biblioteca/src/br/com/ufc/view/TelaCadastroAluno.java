@@ -52,7 +52,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         campoDataNascimento = new javax.swing.JFormattedTextField();
 
         setClosable(true);
-        setMaximizable(true);
         setTitle("Cadastro Aluno");
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
