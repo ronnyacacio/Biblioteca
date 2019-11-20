@@ -148,6 +148,8 @@ public class TelaVizualizarEmprestimo extends javax.swing.JInternalFrame {
                 }
             } catch (ENEException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "ERRO: o campo matricula só aceita números!");
             } finally {
                 campoMatricula.setText("");
             }

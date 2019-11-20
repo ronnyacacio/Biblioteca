@@ -180,6 +180,10 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                 tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
             } catch (ANEException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "ERRO: o campo matrícula só aceita números!");
+            } finally {
+                campoMatricula.setText("");
             }
         } else if(campoMatricula.getText().equals("")) {
             try {
@@ -190,6 +194,8 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                 tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
             } catch (ANEException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
+            } finally {
+                campoCpf.setText("");
             }
         } else {
             try {

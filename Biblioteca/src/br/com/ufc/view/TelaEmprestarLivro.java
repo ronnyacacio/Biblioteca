@@ -15,11 +15,7 @@ import br.com.ufc.exception.LNEException;
 import br.com.ufc.model.Aluno;
 import br.com.ufc.model.Emprestimo;
 import br.com.ufc.model.Livro;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.JOptionPane;
 
 /**
@@ -110,7 +106,7 @@ public class TelaEmprestarLivro extends javax.swing.JInternalFrame {
 
     private void emprestarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroActionPerformed
         if(campoIsbn.getText().equals("") || campoMatricula.getText().equals(""))
-            JOptionPane.showMessageDialog(this, "Preecha todos os campos!");
+            JOptionPane.showMessageDialog(this, "ERRO: preecha todos os campos!");
         else {
             Emprestimo emprestimo = new Emprestimo();
             try {
@@ -131,7 +127,10 @@ public class TelaEmprestarLivro extends javax.swing.JInternalFrame {
             } catch (ANEException | LNEException | LJEException | LLUException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Os campos só aceitam números!");
+                JOptionPane.showMessageDialog(this, "ERRO: os campos só aceitam números!");
+            } finally {
+                campoMatricula.setText("");
+                campoIsbn.setText("");
             }
         }
     }//GEN-LAST:event_emprestarLivroActionPerformed

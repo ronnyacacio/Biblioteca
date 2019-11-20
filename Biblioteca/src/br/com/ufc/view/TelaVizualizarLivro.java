@@ -304,8 +304,10 @@ public class TelaVizualizarLivro extends javax.swing.JInternalFrame {
             else
                 status.setText("Emprestado");
             File filecapa = livro.getCapa();
-            ImageIcon imagem = new ImageIcon(filecapa.getPath());
-            capa.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(capa.getWidth(), capa.getHeight(), Image.SCALE_DEFAULT)));
+            if(filecapa != null) {
+                ImageIcon imagem = new ImageIcon(filecapa.getPath());
+                capa.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(capa.getWidth(), capa.getHeight(), Image.SCALE_DEFAULT)));
+            }
         } catch (LNEException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }

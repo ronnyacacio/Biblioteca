@@ -88,13 +88,15 @@ public class TelaDevolverLivro extends javax.swing.JInternalFrame {
 
     private void devolverLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverLivroActionPerformed
         if(campoId.getText().equals(""))
-            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+            JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
         else {
             try {
                 emprestimoDAO.devolverLivro(Integer.parseInt(campoId.getText()));
                 JOptionPane.showMessageDialog(this, "Livro devolvido com sucesso!");
             } catch (ENEException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Erro: o campo ID só aceita números!");
             } finally {
                 campoId.setText("");
             }

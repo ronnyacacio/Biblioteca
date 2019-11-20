@@ -96,6 +96,8 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "ERRO:  o campo Isbn aceita somente números!");
+            } finally {
+                campoIsbn.setText("");
             }
         }
     }//GEN-LAST:event_excluirLivroActionPerformed
