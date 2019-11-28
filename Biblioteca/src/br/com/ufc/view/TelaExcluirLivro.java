@@ -92,6 +92,7 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
         else {
             try {
                 livroDAO.removerLivro(Long.parseLong(campoIsbn.getText()));
+                JOptionPane.showMessageDialog(this, "Livro removido com sucesso!");
             } catch (LNEException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             } catch (NumberFormatException ex) {
