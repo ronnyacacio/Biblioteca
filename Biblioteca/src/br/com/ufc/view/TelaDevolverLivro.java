@@ -7,9 +7,6 @@ package br.com.ufc.view;
 
 import br.com.ufc.DAO.EmprestimoDAO;
 import br.com.ufc.exception.ENEException;
-import br.com.ufc.model.Emprestimo;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
