@@ -173,15 +173,15 @@ public class TelaRenovarEmprestimo extends javax.swing.JInternalFrame {
 
     private void renovarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renovarEmprestimoActionPerformed
         if(campoId.getText().equals(""))
-            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+            JOptionPane.showMessageDialog(this, "<html><body>Preencha&nbsp todos&nbsp os&nbsp campos!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
         else {
             try {
                 emprestimoDAO.renovarEmprestimo(Integer.parseInt(campoId.getText()));
-                JOptionPane.showMessageDialog(this, "Empréstimo renovado com sucesso!");
+                JOptionPane.showMessageDialog(this, "<html><body>Empréstimo&nbsp renovado&nbsp com&nbsp sucesso!</body></html>");
             } catch (EJRException | ENEException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "O campo id só aceita números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp id&nbsp só&nbsp aceita&nbsp números!</body></html>");
             } finally {
                 campoId.setText("");
             }

@@ -168,7 +168,7 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                     tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
                 }
             } catch (ANEException ex){
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             }
         }    
         else if(campoCpf.getText().equals("   .   .   -  ")) {
@@ -179,9 +179,9 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                 int ano = aluno.getDataNascimento().getYear() + 1900;
                 tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
             } catch (ANEException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO: o campo matrícula só aceita números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp matrícula&nbsp só&nbsp aceita&nbsp números!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoMatricula.setText("");
             }
@@ -193,7 +193,7 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                     int ano = aluno.getDataNascimento().getYear() + 1900;
                     tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
                 } catch (ANEException ex) {
-                    JOptionPane.showMessageDialog(this, ex.getMessage());
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                 } finally {
                     campoCpf.setText("");
                 }
@@ -212,7 +212,7 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                     int ano = aluno.getDataNascimento().getYear() + 1900;
                     tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
                 } catch (ANEException e) {
-                    JOptionPane.showMessageDialog(this, e.getMessage());
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
             } finally {
                 campoCpf.setText("");

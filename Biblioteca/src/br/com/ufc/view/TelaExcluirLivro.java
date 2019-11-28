@@ -88,15 +88,15 @@ public class TelaExcluirLivro extends javax.swing.JInternalFrame {
 
     private void excluirLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirLivroActionPerformed
         if(campoIsbn.getText().equals(""))
-            JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
+            JOptionPane.showMessageDialog(this, "<html><body>Preencha&nbsp todos&nbsp os&nbsp campos!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
         else {
             try {
                 livroDAO.removerLivro(Long.parseLong(campoIsbn.getText()));
-                JOptionPane.showMessageDialog(this, "Livro removido com sucesso!");
+                JOptionPane.showMessageDialog(this, "<html><body>Livro&nbsp removido&nbsp com&nbsp sucesso!</body></html>");
             } catch (LNEException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO:  o campo Isbn aceita somente números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp Isbn&nbsp aceita&nbsp somente&nbsp números!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoIsbn.setText("");
             }

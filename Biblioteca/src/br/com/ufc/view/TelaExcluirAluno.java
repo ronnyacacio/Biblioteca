@@ -81,15 +81,15 @@ public class TelaExcluirAluno extends javax.swing.JInternalFrame {
 
     private void removerAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerAlunoActionPerformed
         if(campoMatricula.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
+            JOptionPane.showMessageDialog(this, "<html><body>Preench&nbspa todos&nbsp os&nbsp campos!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 alunoDAO.removerAluno(Integer.parseInt(campoMatricula.getText()));
-                JOptionPane.showMessageDialog(this, "Aluno removido com sucesso!");
+                JOptionPane.showMessageDialog(this, "<html><body>Aluno&nbsp removido&nbsp com&nbsp sucesso!</body></html>");
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO: o campo matrícula aceita somente números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp matrícula&nbsp aceita&nbsp somente&nbsp números!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (ANEException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoMatricula.setText("");
             }
