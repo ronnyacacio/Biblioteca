@@ -45,11 +45,11 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         cadastrarAluno = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        campoTelefone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
         campoCpf = new javax.swing.JFormattedTextField();
         campoDataNascimento = new javax.swing.JFormattedTextField();
+        campoTelefone = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setTitle("Cadastro Aluno");
@@ -80,8 +80,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel7.setText("Telefone:");
 
-        campoTelefone.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel5.setText("Data de nscimento:");
 
@@ -93,6 +91,12 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         try {
             campoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            campoTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -115,11 +119,11 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                                     .addComponent(campoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                                     .addComponent(campoNome))
                                 .addGap(106, 106, 106)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel7)
-                                    .addComponent(campoTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                    .addComponent(campoDataNascimento))))
+                                    .addComponent(campoDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(187, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -142,9 +146,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(campoNome))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoTelefone))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -163,7 +167,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                 .addComponent(campoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,7 +188,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         if(campoNome.getText().equals("")
            || campoCpf.getText().equals("   .   .   -  ")
            || campoCurso.getText().equals("")
-           || campoTelefone.getText().equals("")
+           || campoTelefone.getText().equals("(  )     -    ")
            || campoMatricula.getText().equals("")
            || campoDataNascimento.getText().equals("  /  /  ")) {
                 JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
@@ -227,7 +231,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField campoDataNascimento;
     private javax.swing.JTextField campoMatricula;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JTextField campoTelefone;
+    private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

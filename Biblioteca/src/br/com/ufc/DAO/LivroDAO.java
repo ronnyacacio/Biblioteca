@@ -11,6 +11,7 @@ import br.com.ufc.interfece.LivroI;
 import br.com.ufc.model.Livro;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -38,7 +39,7 @@ public class LivroDAO implements LivroI {
     @Override
     public Livro buscarLivroPorIsbn(Long isbn) throws LNEException {
         for(Livro livro : livros) {
-            if(livro.getIsbn() == isbn)
+            if(Objects.equals(livro.getIsbn(), isbn))
                 return livro;
         }
         throw new LNEException();

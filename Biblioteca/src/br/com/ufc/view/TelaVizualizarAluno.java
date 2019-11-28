@@ -158,7 +158,7 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
         DefaultTableModel tabela = (DefaultTableModel) Tabela.getModel();
         while(tabela.getRowCount() > 0)
             tabela.removeRow(0);
-        if(campoCpf.getText().equals("   .   .   -  ") || campoMatricula.getText().equals("")) {
+        if(campoCpf.getText().equals("   .   .   -  ") && campoMatricula.getText().equals("")) {
             try {
                 List<Aluno> alunos = alunoDAO.getAluno();
                 for(Aluno aluno : alunos) {
@@ -186,17 +186,17 @@ public class TelaVizualizarAluno extends javax.swing.JInternalFrame {
                 campoMatricula.setText("");
             }
         } else if(campoMatricula.getText().equals("")) {
-            try {
-                Aluno aluno = alunoDAO.buscarAlunoPorCpf(campoCpf.getText());
-                int dia = aluno.getDataNascimento().getDate();
-                int mes = aluno.getDataNascimento().getMonth() + 1;
-                int ano = aluno.getDataNascimento().getYear() + 1900;
-                tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
-            } catch (ANEException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
-            } finally {
-                campoCpf.setText("");
-            }
+                try {
+                    Aluno aluno = alunoDAO.buscarAlunoPorCpf(campoCpf.getText());
+                    int dia = aluno.getDataNascimento().getDate();
+                    int mes = aluno.getDataNascimento().getMonth() + 1;
+                    int ano = aluno.getDataNascimento().getYear() + 1900;
+                    tabela.addRow(new Object[] {aluno.getNome(), aluno.getMatricula(), aluno.getCurso(), aluno.getCpf(), aluno.getTelefone(), dia + "/" + mes + "/" + ano});
+                } catch (ANEException ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage());
+                } finally {
+                    campoCpf.setText("");
+                }
         } else {
             try {
                 Aluno aluno = alunoDAO.buscarAlunoPorMatricula(Integer.parseInt(campoMatricula.getText()));
