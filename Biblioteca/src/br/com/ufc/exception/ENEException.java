@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class ENEException extends Exception {
     public ENEException() {
-        super("ERRO: emprestimo não encontrado!");
+        super("Emprestimo não encontrado!");
     }
 }

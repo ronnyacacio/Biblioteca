@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class EJRException extends Exception {
     public EJRException() {
-        super("ERRO: o emprestimo já foi renovado!");
+        super("O emprestimo já foi renovado!");
     }
 }
