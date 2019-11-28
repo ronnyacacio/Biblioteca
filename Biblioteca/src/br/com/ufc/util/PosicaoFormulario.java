@@ -27,5 +27,4 @@ public class PosicaoFormulario {
         desktop.add(janela);
         janela.setVisible(true);
     }
-    
 }
