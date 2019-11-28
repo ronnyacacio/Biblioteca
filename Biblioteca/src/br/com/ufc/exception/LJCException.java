@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class LJCException extends Exception {
     public LJCException() {
-        super("ERRO: livro já cadastrado!");
+        super("Livro já cadastrado!");
     }
 }

@@ -28,14 +28,4 @@ public class PosicaoFormulario {
         janela.setVisible(true);
     }
     
-    public void abrirFormularioNotSize(JPanel janela, JInternalFrame desktop) {
-        int wDesk = desktop.getWidth();
-        int hDesk = desktop.getHeight();
-        janela.setSize(400, 400);
-        int wJane = janela.getWidth();
-        int hJane = janela.getHeight();
-        janela.setLocation(wDesk / 2 - wJane / 2, hDesk / 2 - hJane /2);
-        janela.setVisible(true);
-    }
-    
 }

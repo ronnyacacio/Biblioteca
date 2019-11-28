@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class AJCException extends Exception {
     public AJCException() {
-        super("ERRO: aluno já cadastrado!");
+        super("Aluno já cadastrado!");
     }
 }

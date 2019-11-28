@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class LJEException extends Exception {
     public LJEException() {
-        super("ERRO: livro já emprestado!");
+        super("Livro já emprestado!");
     }
 }

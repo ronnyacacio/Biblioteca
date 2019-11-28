@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class ANEException extends Exception {
     public ANEException() {
-        super("ERRO: aluno não encontrado!");
+        super("Aluno não encontrado!");
     }
 }

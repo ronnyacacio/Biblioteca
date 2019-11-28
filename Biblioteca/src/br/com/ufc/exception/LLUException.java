@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class LLUException extends Exception {
     public LLUException() {
-        super("ERRO: você só tem direito à alugar 4 livros!");
+        super("Você só tem direito à alugar 4 livros!");
     }
 }

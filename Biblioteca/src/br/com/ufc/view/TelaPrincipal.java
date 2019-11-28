@@ -41,7 +41,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         panel.setVisible(false);
         setExtendedState(MAXIMIZED_BOTH);
-        setTitle("Biblioteca Saldanha Acacio");
+        setTitle("Biblioteca");
         ImageIcon imagem = new ImageIcon("/home/ronny/NetBeansProjects/Biblioteca/Biblioteca/src/imagens/library-enter6.jpg");
         menuPrincipal.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height-50);
         menuPrincipal.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height-50, Image.SCALE_DEFAULT)));

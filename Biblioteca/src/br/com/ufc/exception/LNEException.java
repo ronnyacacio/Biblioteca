@@ -11,6 +11,6 @@ package br.com.ufc.exception;
  */
 public class LNEException extends Exception {
     public LNEException() {
-        super("ERRO: livro não encontrado!");
+        super("Livro não encontrado!");
     }
 }
