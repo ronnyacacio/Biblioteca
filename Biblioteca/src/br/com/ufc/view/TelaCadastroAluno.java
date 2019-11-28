@@ -100,6 +100,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        campoTelefone.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,10 +147,12 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoTelefone))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(campoTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel2))
@@ -191,7 +194,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
            || campoTelefone.getText().equals("(  )     -    ")
            || campoMatricula.getText().equals("")
            || campoDataNascimento.getText().equals("  /  /  ")) {
-                JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
+                JOptionPane.showMessageDialog(this, "<html><body>Preencha&nbsp todos&nbsp os&nbsp campos!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
         } else {
             Aluno aluno = new Aluno();
             aluno.setNome(campoNome.getText());
@@ -204,13 +207,13 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                 aluno.setMatricula(Integer.parseInt(campoMatricula.getText()));
                 aluno.setDataNascimento(formatador.parse(campoDataNascimento.getText()));
                 alunoDAO.cadastrarAluno(aluno);
-                JOptionPane.showMessageDialog(this, "Aluno cadastrado com sucesso!");
+                JOptionPane.showMessageDialog(this, "<html><body>Aluno&nbsp cadastrado&nbsp com&nbsp sucesso!</body></html>");
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO: o campo matrícula aceita somente números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp matrícula&nbsp aceita&nbsp somente&nbsp números!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO: data inválida!");
+                JOptionPane.showMessageDialog(this, "<html><body> Data&nbsp inválida!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (AJCException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoNome.setText("");
                 campoMatricula.setText("");

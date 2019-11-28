@@ -174,11 +174,11 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
                 livro.setIsbn(Long.parseLong(campoIsbn.getText()));
                 livro.setCapa(file);
                 livroDAO.cadastrarLivro(livro);
-                JOptionPane.showMessageDialog(this, "Livro \t cadastrado com sucesso!");
+                JOptionPane.showMessageDialog(this, "<html><body>Livro&nbsp cadastrado&nbsp com&nbsp sucesso!</body></html>");
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO: o campo Isbn aceita somente números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp Isbn&nbsp aceita&nbsp somente&nbsp números!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (LJCException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(),"ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoAutor.setText("");
                 campoDescricao.setText("");

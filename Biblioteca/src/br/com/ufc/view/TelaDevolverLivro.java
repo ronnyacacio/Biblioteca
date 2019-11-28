@@ -85,15 +85,15 @@ public class TelaDevolverLivro extends javax.swing.JInternalFrame {
 
     private void devolverLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverLivroActionPerformed
         if(campoId.getText().equals(""))
-            JOptionPane.showMessageDialog(this, "ERRO: preencha todos os campos!");
+            JOptionPane.showMessageDialog(this, "<html><body>Preencha&nbsp todos&nbsp os&nbsp campos!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
         else {
             try {
                 emprestimoDAO.devolverLivro(Integer.parseInt(campoId.getText()));
-                JOptionPane.showMessageDialog(this, "Livro devolvido com sucesso!");
+                JOptionPane.showMessageDialog(this, "<html><body>Livro&nbsp devolvido&nbsp com&nbsp sucesso!</body></html>");
             } catch (ENEException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Erro: o campo ID só aceita números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp ID&nbsp só&nbsp aceita&nbsp números!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoId.setText("");
             }

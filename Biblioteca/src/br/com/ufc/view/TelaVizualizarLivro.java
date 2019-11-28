@@ -309,7 +309,7 @@ public class TelaVizualizarLivro extends javax.swing.JInternalFrame {
                 capa.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(capa.getWidth(), capa.getHeight(), Image.SCALE_DEFAULT)));
             }
         } catch (LNEException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tabelaMouseClicked
 

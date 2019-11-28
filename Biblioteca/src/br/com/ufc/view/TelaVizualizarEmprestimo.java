@@ -132,7 +132,7 @@ public class TelaVizualizarEmprestimo extends javax.swing.JInternalFrame {
         while(tabela.getRowCount() > 0)
             tabela.removeRow(0);
         if(campoMatricula.getText().equals(""))
-            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+            JOptionPane.showMessageDialog(this, "<html><body>Preencha&nbsp todos&nbsp os&nbsp campos!</body></html>");
         else {
             try {
                 List<Emprestimo> emprestimos = emprestimoDAO.buscarEmprestimosPorAluno(Integer.parseInt(campoMatricula.getText()));
@@ -149,7 +149,7 @@ public class TelaVizualizarEmprestimo extends javax.swing.JInternalFrame {
             } catch (ENEException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO: o campo matricula só aceita números!");
+                JOptionPane.showMessageDialog(this, "<html><body>O&nbsp campo&nbsp matricula&nbsp só&nbsp aceita&nbsp números!</body></html>", "ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoMatricula.setText("");
             }
@@ -173,7 +173,7 @@ public class TelaVizualizarEmprestimo extends javax.swing.JInternalFrame {
                 tabela.addRow(new Object[] { emprestimo.getId(), emprestimo.getAluno().getMatricula(), emprestimo.getLivro().getIsbn(), diaA + "/" + mesA + "/" + anoA, diaD + "/" + mesD + "/" + anoD });
             }
         } catch (ENEException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_todosEmprestimosActionPerformed
 

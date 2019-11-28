@@ -61,6 +61,8 @@ public class TelaEmprestarLivro extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel2.setText("Isbn do livro:");
 
+        campoIsbn.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+
         emprestarLivro.setText("Emprestar");
         emprestarLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,11 +125,11 @@ public class TelaEmprestarLivro extends javax.swing.JInternalFrame {
                 emprestimo.setDevolucao(devolucao);
                 
                 emprestimoDAO.alugarLivro(emprestimo);
-                JOptionPane.showMessageDialog(this, "Emprestimo realizado com sucesso! Seu id é: " + emprestimo.getId());
+                JOptionPane.showMessageDialog(this, "<html><body>Emprestimo&nbsp realizado&nbsp com&nbsp sucesso!&nbsp Seu&nbsp id&nbsp é:&nbsp </body></html>" + emprestimo.getId());
             } catch (ANEException | LNEException | LJEException | LLUException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "ERRO: os campos só aceitam números!");
+                JOptionPane.showMessageDialog(this, "<html><body>Os&nbsp campos&nbsp só&nbsp aceitam&nbsp números!", "ERRO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 campoMatricula.setText("");
                 campoIsbn.setText("");
