@@ -1,5 +1,7 @@
 # Aplicação java para controle de biblioteca
 
+Criado por: Ronny Acácio e Francisco Geovan. 
+
 ## Base do sistema
 
 A aplicação será acessada por alunos e bibliotecários, assim os alunos ficaram responsáveis por alugar seus livros e os bibliotecários ficarão na parte de administração e povoamento dos dados.
